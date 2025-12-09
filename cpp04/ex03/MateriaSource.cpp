@@ -49,7 +49,7 @@ void	MateriaSource::learnMateria( AMateria *m )
 	for (int i = 0; i < 4; i++){
 		if (!memory[i])
 		{
-			memory[i] = m->clone();
+			memory[i] = m;
 			return ;
 		}
 	}

@@ -9,6 +9,7 @@ class	Character : public ICharacter
 	private:
 		std::string	name;
 		AMateria	*invatory[4];
+		AMateria	*dropped[10];
 
 	public:
 		Character( );
@@ -21,6 +22,7 @@ class	Character : public ICharacter
 		void				equip( AMateria *m );
 		void				unequip( int idx );
 		void 				use( int idx, ICharacter &target );
+		void				Drops( AMateria *m );
 };
 
 #endif
