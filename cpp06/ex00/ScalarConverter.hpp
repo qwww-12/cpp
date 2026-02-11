@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <climits>
 #include <cmath>
+#include <stdexcept>
 
 class ScalarConverter
 {
@@ -19,5 +21,7 @@ class ScalarConverter
 
 void    log_NaN( void );
 void    log_inf( char sign );
+void    log_FloatingPoint( double Double );
+double  stodd( std::string str, bool &error );
 
 #endif

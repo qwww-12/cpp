@@ -21,24 +21,34 @@ void    ScalarConverter::convert( std::string str )
         log_NaN( );
         return ;
     }
-    if (str == "+inf" || str == "-inf" || str == "-inff" || str == "+inff"){
-        log_inf( str[0] );
+    if (str == "+inf" || str == "-inf" || str == "-inff" || str == "+inff" || str == "inf" || str == "inff"){
+        log_inf( str[0] == '-' ? '-' : '+' );
         return ;
     }
 
-    double  Double = std::stod(str);
-    char    Char = static_cast<char>(Double);
+    try {
+        bool    error = false;
+        double  Double = stodd(str, error);
+        if (error == true)
+            throw (std::invalid_argument("impossible"));
+        if (Double > CHAR_MAX || Double < CHAR_MIN)
+            std::cout << "char: impossible" << std::endl;
+        else if (Double < 32 || Double > 126)
+            std::cout << "char: Non displayable" << std::endl;
+        else {
+            char    Char = static_cast<char>(Double);
+            std::cout << "char: '" << Char << "'" << std::endl;
+        }
+        if (Double > INT_MAX || Double < INT_MIN)
+            std::cout << "int: impossible" << std::endl;
+        else
+            std::cout << "int: " << static_cast<int>(Double) << std::endl;
 
-    if (Char < 32 || Char > 126)
-        std::cout << "char: Non displayable" << std::endl;
-    else
-        std::cout << "char: '" << Char << "'" << std::endl;
-
-    if (Double > 2147483647 || Double < -2147483648)
-        std::cout << "int: impossible" << std::endl;
-    else
-        std::cout << "int: " << static_cast<int>(Double) << std::endl;
-
-    std::cout << "float: " << static_cast<float>(Double) << std::endl;
-    std::cout << "double: " << Double << std::endl;
+        log_FloatingPoint( Double );
+    } catch (...) {
+        std::cout   << "char: impossible" << std::endl
+                    << "int: impossible" << std::endl
+                    << "float: impossible" << std::endl
+                    << "double: impossible" << std::endl;
+    }
 }

@@ -2,20 +2,20 @@ CXX = c++
 
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = 	main.cpp 			\
-		ScalarConverter.cpp	\
-		utils.cpp
+SRC =	main.cpp	\
+		Serializer.cpp
 
-OBJ = $(SRC:.cpp=.o)
+OBJ =	$(SRC:.o=.cpp)
 
-HDR =	ScalarConverter.hpp
+HDR =	Serializer.hpp	\
+		Data.hpp
 
-NAME = convert
+NAME = Serial
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $@
 
 %.o: %.cpp $(HDR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
