@@ -1,11 +1,11 @@
 CXX = c++
 
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+# CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	main.cpp	\
 		Serializer.cpp
 
-OBJ =	$(SRC:.o=.cpp)
+OBJ =	$(SRC:.cpp=.o)
 
 HDR =	Serializer.hpp	\
 		Data.hpp
