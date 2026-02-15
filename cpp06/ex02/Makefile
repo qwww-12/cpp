@@ -3,14 +3,15 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	main.cpp	\
-		Serializer.cpp
+		Base.cpp	\
+		functions.cpp
 
 OBJ =	$(SRC:.cpp=.o)
 
 HDR =	Serializer.hpp	\
 		Data.hpp
 
-NAME = Serial
+NAME = base
 
 all: $(NAME)
 

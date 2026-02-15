@@ -2,10 +2,14 @@
 
 Serializer::Serializer( void ) { }
 
-Serializer::Serializer( const Serializer &copy ) { }
+Serializer::Serializer( const Serializer &copy ) 
+{ 
+    (void)copy;
+}
 
 Serializer  &Serializer::operator=( const Serializer &op )
 {
+    (void)op;
     return (*this);
 }
 

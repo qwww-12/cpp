@@ -1,13 +1,13 @@
 #include "Serializer.hpp"
 
-int     main( )
+int     main( void )
 {
-    std::cout << "hello" << std::endl;
-    Data    d1;
-    Data    *d2 = &d1;
+    Data    *d2 = NULL;
 
     uintptr_t   u = Serializer::serialize(d2);
+    Data        *d3 = Serializer::deserialize(u);
 
-    std::cout << "address of first struct" << &d1 << std::endl;
-    std::cout << "address of first strucy by casting is" << u << std::endl;
+    std::cout << "address of d1: " << d2 << std::endl;
+    std::cout << "number address: " << u << std::endl;
+    std::cout << "address of d1 by d3: " << d3 << std::endl;
 }
