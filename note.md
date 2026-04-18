@@ -1,5 +1,7 @@
-in subject of casting:
+- [x] [CPP06](https://github.com/qwww-12/cpp/tree/master/cpp06)
 
+in subject of casting:
+---
 **static_cast**: is can change value so have a operation in runtime like:
 ```cpp
             float f = 9.9f;
