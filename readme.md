@@ -94,7 +94,7 @@ this class in **.tpp** you need add `<>`, and write template parameter like `<T>
 - when create a new object use this **<>**
 - when use scop resolution **::** use with it **<>** to tell compiler any class normal or template  
 either:
-- in inside class template don't use **<>**
+- in inside class template don't use **<>** the compiler know type
 - parameters don't use **<>**, the compiler already know type
 
 examples:
