@@ -69,4 +69,5 @@ this like a normal way for write body of function in syntax file `.cpp` if just 
         template <typename T>
         T       add(T a, T b);
 ```
-so compiler is leave excute in run-time because is found defination in header, now compiler in file `add.cpp` found body of add function but the problem compiler is can't know type of T so don't create object file for add.cpp, and in step linker call add function but there is no code of add
+so compiler continue translte code because is found declaration in header, now compiler in file `add.cpp` found defination of add function but the problem compiler is can't know type of T so don't create object file for add.cpp, and in step linker call add function but there is no code of add.
+withou templates, function of add has one specific type,so compiler create object file of add function and can link in linker step without any probleme
