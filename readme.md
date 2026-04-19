@@ -73,4 +73,4 @@ so compiler continue translte code because is found declaration in header, now c
 withou templates, function of add has one specific type,so compiler create object file of add function and can link in linker step without any probleme
 
 #### note:
-> if want don't change this way for write code you can use **.tpp** file for help can include files of .tpp in header, example: `#include add.tpp`, this help in add.cpp get information about types for creat object file
+> if want don't change this way for write code you can use **.tpp** file for help can include files of .tpp in header, example: `#include add.tpp`, this help in add.cpp get information about types for create object file
