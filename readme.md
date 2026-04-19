@@ -30,9 +30,43 @@ if print j your output like this: `983958935058`, this not random number, the va
             B *b = new D;
             D *d = dynamic_cast<D *>(b);
 ```
-
----
+>
+#### documentation:
 > can you read this for more understand:<br>
 &emsp;[static_cast](https://en.cppreference.com/cpp/language/static_cast)<br>
 &emsp;[reinterpret_cast](https://en.cppreference.com/cpp/language/reinterpret_cast)<br>
 &emsp;[dynamic_cast](https://en.cppreference.com/cpp/language/dynamic_cast)<br>
+
+
+---
+
+- [x] [CPP07](https://github.com/qwww-12/cpp/tree/master/cpp07)
+
+in subject of template
+--
+**template**: is a way for create function can acceppt more type of variable in one function:
+```CPP
+        template <typename T>
+        T    add(T a, T b){
+                return a+b;
+        }
+```
+so in this example we can use this function `add` for addittion 2 type var for any type: **char**, **int**, **double** and more ...
+
+- now let explain how template can work look in this structure of file:
+
+
+```
+cpp  
+├─ add.cpp
+├─ add.hpp
+└─ main.cpp
+```
+this like a normal way for write body of function in syntax file `.cpp` if just define function in header, but with templates it's different let's understand this:
+
+&emsp;now compiler first thing go to main function and see a new function in main: `add(12.1, 34.1)`, the compiler go in `#include "add.hpp"` for to go in this file and compiler found the defination of function add:
+```CPP
+        template <typename T>
+        T       add(T a, T b);
+```
+so compiler is leave excute in run-time because is found defination in header, now compiler in file `add.cpp` found body of add function but the problem compiler is can't know type of T so don't create object file for add.cpp, and in step linker call add function but there is no code of add
