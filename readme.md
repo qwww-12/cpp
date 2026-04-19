@@ -74,3 +74,48 @@ withou templates, function of add has one specific type,so compiler create objec
 
 #### note:
 > if want don't change this way for write code you can use **.tpp** file for help can include files of .tpp in header, example: `#include add.tpp`, this help in add.cpp get information about types for create object file
+
+- class templates:
+```CPP
+        template <typename T>
+        class ste{        
+                private:
+                        T var;
+                public:
+                        ste();
+                        ste( const ste &copy );
+                        ste &operator=( const ste &op );
+                        ~(ste);
+                        void    set_var( T val );
+                        T       get_var( void ) const;
+        };
+```
+this class in **.tpp** you need add `<>`, and write template parameter like `<T>`:
+- so when create a new object use this **<>**
+- when use scop resolution **::** use with it **<>** to tell compiler any class normal or template
+either:
+- in inside class template don't use **<>**
+- parameters don't use **<>**, the compiler already know type
+
+examples:
+```CPP
+        template <typename T>
+        ste<T>::ste() {};
+        template <typename T>
+        ste<T>::ste( const ste &copy ) : var(copy.var);
+        template <typename T>
+        ste<T>     &ste<T>::operator=( const ste &op ) {/*..*/};
+        template <typename T>
+        void    ste<T>::set_var( T val ) { var = val };
+        template <typename T>
+        T       ste<T>::get_var( void ) return var;
+        template <typename T>
+        ste<T>::~ste() {};
+```
+```CPP
+        int main( void ){
+                ste<int> new_class; // here chose type between <>, not use template <typename any_name>
+        }
+```
+### note:
+> each temaplate used one more in function or class, and again create a new template for another function or class

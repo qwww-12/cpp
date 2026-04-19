@@ -19,6 +19,7 @@ void    printChar(const char &var)
 void    incChar(char &var)
 {
     var++;
+    std::cout << var;
 }
 
 int main( void )
@@ -31,4 +32,7 @@ int main( void )
 
     iter(array_char, 3, printChar);
     std::cout << std::endl;
+
+    iter(array_char, 3, incChar);
+    std::cout <<  std::endl;
 }

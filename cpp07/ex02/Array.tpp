@@ -34,7 +34,7 @@ Array<T>   &Array<T>::operator=( const Array<T> &op )
 }
 
 template <typename T>
-T   &Array<T>::operator[]( unsigned int index )
+Array<T>   &Array<T>::operator[]( unsigned int index )
 {
     if (index >= size())
         throw (std::out_of_range("Index is out of range"));
@@ -51,4 +51,12 @@ template <typename T>
 unsigned int Array<T>::size( void ) const
 {
     return (el_array);
+}
+
+template <typename T>
+std::ostream    &operator<<( std::ostream &out, Array<T> array){
+    for (int i = 0; i < array.size(); i++){
+        out << array[i];
+    }
+    return out;
 }
