@@ -91,8 +91,8 @@ withou templates, function of add has one specific type,so compiler create objec
         };
 ```
 this class in **.tpp** you need add `<>`, and write template parameter like `<T>`:
-- so when create a new object use this **<>**
-- when use scop resolution **::** use with it **<>** to tell compiler any class normal or template
+- when create a new object use this **<>**
+- when use scop resolution **::** use with it **<>** to tell compiler any class normal or template  
 either:
 - in inside class template don't use **<>**
 - parameters don't use **<>**, the compiler already know type
