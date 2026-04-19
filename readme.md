@@ -71,3 +71,6 @@ this like a normal way for write body of function in syntax file `.cpp` if just 
 ```
 so compiler continue translte code because is found declaration in header, now compiler in file `add.cpp` found defination of add function but the problem compiler is can't know type of T so don't create object file for add.cpp, and in step linker call add function but there is no code of add.
 withou templates, function of add has one specific type,so compiler create object file of add function and can link in linker step without any probleme
+
+#### note:
+> if want don't change this way for write code you can use **.tpp** file for help can include files of .tpp in header, example: `#include add.tpp`, this help in add.cpp get information about types for creat object file
