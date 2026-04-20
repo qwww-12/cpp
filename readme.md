@@ -117,7 +117,5 @@ examples:
                 ste<int> new_class; // here chose type between <>, not use template <typename any_name>
         }
 ```
-
-
 ### note:
 > each temaplate used one more in function or class, and again create a new template for another function or class
