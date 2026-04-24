@@ -5,15 +5,28 @@ ShrubberyCreationForm::ShrubberyCreationForm( )
     std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
+ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm &copy )
+{
+    std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
+}
+
+ShrubberyCreationForm   &ShrubberyCreationForm::operator=( const ShrubberyCreationForm &op ){
+    std::cout << "ShrubberyCreationForm operator assaignment called" << std::endl;
+    return *this;
+}
+
 ShrubberyCreationForm::~ShrubberyCreationForm( )
 {
     std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-void    ShrubberyCreationForm::Required_grades( const Bureaucrat &b, const AForm &f )
-{
-    try {
-        if (b.getGrade() > 145 && b.getGrade() && f.getGradeX() > 137)
-            throw ;
+void    ShrubberyCreationForm::excute( Bureaucrat const &executor ) const{
+    try{
+        if (getGrade_S() == 145 && getGrade_X() == 137)
+        {
+            std::ofstream file(getName() + "_shrubbery");
+            if (!file.is_open())
+                throw std::runtime_error("can't create a file");
+        }
     }
 }

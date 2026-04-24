@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-int		main( void )
+int main(void)
 {
 	try {
 		Bureaucrat b1("Sif", 0);

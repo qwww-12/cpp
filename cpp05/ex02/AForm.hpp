@@ -30,12 +30,13 @@ class   AForm
 		AForm( const AForm &copy );
 		AForm &operator=( const AForm &op );
 		~AForm( );
-
 		std::string		getName( void ) const;
 		bool			getSign( void ) const;
 		int				getGrade_S( void ) const;
 		int				getGrade_X( void ) const;
 		void			beSigned( const Bureaucrat &b );
+
+		virtual void	excute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream &operator<<( std::ostream &out, const AForm &f );
