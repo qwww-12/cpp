@@ -33,7 +33,6 @@ class	Bureaucrat
 		~Bureaucrat( );
 		std::string		getName( void ) const;
 		int				getGrade( void ) const;
-		
 		void			BureaucratInc( void );
 		void			BureaucratDec( void );
 		void			signForm(  AForm &f );

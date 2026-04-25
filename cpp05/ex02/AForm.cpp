@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 const char	*AForm::GradeTooHighException::what( ) const throw()
 {
@@ -66,14 +67,14 @@ int			AForm::getGrade_X( void ) const
 void		AForm::beSigned( const Bureaucrat &b )
 {
 	if (b.getGrade() > getGrade_S())
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	_signed = true;
 }
 
 void		AForm::execute( Bureaucrat const &executor ) const
 {
 	if (!getSign() || executor.getGrade() > getGrade_X())
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	action();
 }
 
