@@ -1,10 +1,7 @@
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
-#include <iostream>
-#include <exception>
-
-class Bureaucrat;
+#include "Bureaucrat.hpp"
 
 class   AForm
 {
