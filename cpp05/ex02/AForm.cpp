@@ -70,6 +70,19 @@ void		AForm::beSigned( const Bureaucrat &b )
 	_signed = true;
 }
 
+void		AForm::excute( Bureaucrat const &executor ) const
+{
+	try{
+		if (!getSign())
+			throw std::logic_error("<" + executor.getName() + ">" + " can't excute not sign");
+		if (executor.getGrade() > getGrade_X())
+			throw std::logic_error("<" + executor.getName() + ">" + " can't excut");
+	}
+	catch (std::string &str){
+		std::cout << str << std::endl;
+	}
+}
+
 std::ostream &operator<<( std::ostream &out, const AForm &f )
 {
 	out << f.getName() << " Form signed grade " << f.getGrade_S();

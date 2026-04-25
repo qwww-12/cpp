@@ -20,13 +20,22 @@ ShrubberyCreationForm::~ShrubberyCreationForm( )
     std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-void    ShrubberyCreationForm::excute( Bureaucrat const &executor ) const{
+void    ShrubberyCreationForm::action( Bureaucrat const &executor ) const{
     try{
-        if (getGrade_S() == 145 && getGrade_X() == 137)
-        {
-            std::ofstream file(getName() + "_shrubbery");
-            if (!file.is_open())
-                throw std::runtime_error("can't create a file");
-        }
+        std::ofstream file(getName() + "_shrubbery");
+        if (!file.is_open())
+            throw std::runtime_error("can't create a file");
+        file << "       _-_," << std::endl;
+        file << " /~~         ~~\\" << std::endl;
+        file << "    /~~   ~~\\" << std::endl;
+        file << "{               }" << std::endl;
+        file << " \\  _-     -_  /" << std::endl;
+        file << "   ~  \\\\ //  ~" << std::endl;
+        file << "_- -   | | _- _" << std::endl;
+        file << "  _ -  | |   -_" << std::endl;
+        file << "      // \\\\" << std::endl;
+    }
+    catch (std::string &str){
+        std::cout << str << std::endl;
     }
 }

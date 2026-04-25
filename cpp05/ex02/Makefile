@@ -4,12 +4,14 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC = 	main.cpp 		\
 		Bureaucrat.cpp	\
-		Form.cpp
+		AForm.cpp		\
+		ShrubberyCreationForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 HDR =	Bureaucrat.hpp	\
-		Form.hpp
+		AForm.hpp		\
+		ShrubberyCreationForm.hpp
 
 NAME = a.out
 

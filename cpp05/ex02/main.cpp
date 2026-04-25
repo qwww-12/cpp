@@ -4,12 +4,4 @@ int main()
 {
 	Bureaucrat b1("Sif", 50);
 	Bureaucrat b2("chunk", 50);
-
-	AForm f("Bob", 40, 10);
-	AForm f2("Ssl", 89, 10);
-
-	b1.signForm(f);
-	b2.signForm(f2);
-
-	
 }
