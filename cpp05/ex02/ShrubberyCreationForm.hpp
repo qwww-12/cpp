@@ -6,12 +6,21 @@
 
 class ShrubberyCreationForm : public AForm
 {
+    private:
+        std::string     target;
+
     public:
-        ShrubberyCreationForm();
+
+        class   FileProbleme : public std::exception{
+            public:
+                const char  *what() const throw(); 
+        };
+
+        ShrubberyCreationForm( std::string target );
         ShrubberyCreationForm( const ShrubberyCreationForm &copy );
         ShrubberyCreationForm &operator=( const ShrubberyCreationForm &op );
         ~ShrubberyCreationForm();
-        void	action( Bureaucrat const &executor ) const;
+        void	action( void ) const;
 };
 
 #endif
