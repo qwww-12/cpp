@@ -27,4 +27,9 @@ RobotomyRequestForm::~RobotomyRequestForm( )
 
 void    RobotomyRequestForm::action( void ) const
 {
+    std::cout << "Vzzzzzzz Vzzzzzzzz.." << std::endl;
+    if (rand() % 2)
+        std::cout << target << " has been robotomized successfully" << std::endl;
+    else
+        std::cout << target << " robotomy failed" << std::endl;
 }
