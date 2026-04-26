@@ -16,7 +16,8 @@ class ShrubberyCreationForm : public AForm
                 const char  *what() const throw(); 
         };
 
-        ShrubberyCreationForm( std::string target );
+        ShrubberyCreationForm( );
+        ShrubberyCreationForm( const std::string target );
         ShrubberyCreationForm( const ShrubberyCreationForm &copy );
         ShrubberyCreationForm &operator=( const ShrubberyCreationForm &op );
         ~ShrubberyCreationForm();
