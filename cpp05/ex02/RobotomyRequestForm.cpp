@@ -18,6 +18,11 @@ RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm &copy ) : AF
 RobotomyRequestForm &RobotomyRequestForm::operator=( const RobotomyRequestForm &op )
 {
     std::cout << "RobotomyRequestForm operator assignment called" << std::endl;
+    if (this != &op){
+	    AForm::operator=(op);
+	    target = op.target;
+    }
+    return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm( )
