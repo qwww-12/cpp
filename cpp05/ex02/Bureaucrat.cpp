@@ -70,18 +70,18 @@ void	Bureaucrat::BureaucratDec( void )
 
 std::ostream &operator<<( std::ostream &out, const Bureaucrat &b )
 {
-	out << b.getName() << ", bureaucrat grade " << b.getGrade() << "." << std::endl;
+	out << b.getName() << ", bureaucrat grade " << b.getGrade();
 	return (out);
 }
 
 void	Bureaucrat::signForm( AForm &f )
 {
 	try {
-		 f.beSigned(*this);
-		std::cout << *this << "signed " << f << std::endl;
+		f.beSigned(*this);
+		std::cout << *this << " signed " << f << std::endl;
 	}
 	catch (std::exception &e) {
-		std::cout << *this << "couldn't sign " << f << " beacause: "<<  e.what() << std::endl;
+		std::cout << *this << " couldn't sign " << f << " beacause: "<<  e.what() << std::endl;
 	}
 }
 
@@ -92,6 +92,8 @@ void	Bureaucrat::executeForm( AForm const &form ) const
 		std::cout << getName()<< " excuted " << form.getName() << std::endl;
 	}
 	catch (std::exception &e){
-		std::cout << getName() << " can't execute " << form.getName() << "because: " << e.what() << std::endl;
+		std::cout << getName() << " can't execute " << form.getName() << " because: ";
+		if (!form.getSign()) std::cout << "not sign" << std::endl;
+		else std::cout << e.what() << std::endl;
 	}
 }
