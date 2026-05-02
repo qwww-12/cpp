@@ -38,7 +38,7 @@ AForm	*Intern::Obj_Shrubbery( const std::string &target ) const{
 AForm	*Intern::makeForm( const std::string &nform, const std::string &tform )
 {
 	std::string	all_forms[3] = {
-		"robotomy request", 
+		"robotomy request",
 		"presidential pardon", 
 		"shrubbery creation"
 	};
@@ -47,12 +47,12 @@ AForm	*Intern::makeForm( const std::string &nform, const std::string &tform )
 		&Intern::Obj_Pre,
 		&Intern::Obj_Shrubbery
 	};
-	for (int idx = 0; idx < 1; idx++){
+	for (int idx = 0; idx < 3; idx++){
 		if (all_forms[idx] == nform){
 			std::cout << "Intern creates " << nform << std::endl;
 			return (this->*ptr[idx])(tform);
 		}
 	}
-	std::cout << "Intern fails creates " << nform << std::endl; // edit this printing by throwing and catching
+	std::cout << "Intern fails creates " << nform << std::endl;
 	return NULL;
 }
