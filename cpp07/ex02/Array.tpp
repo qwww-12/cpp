@@ -55,7 +55,7 @@ unsigned int Array<T>::size( void ) const
 
 template <typename T>
 std::ostream    &operator<<( std::ostream &out, Array<T> array){
-    for (int i = 0; i < array.size(); i++){
+    for (unsigned int i = 0; i < array.size(); i++){
         out << array[i];
     }
     return out;
