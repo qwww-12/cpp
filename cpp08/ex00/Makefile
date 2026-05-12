@@ -23,7 +23,7 @@ $(NAME): $(OBJ)
 clean:
 	rm -f $(OBJ)
 
-fclean: $(clean)
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
