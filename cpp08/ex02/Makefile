@@ -3,13 +3,13 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	main.cpp \
-		Span.cpp
+		MutantStack.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HDR =	Span.hpp
+HDR =	MutantStack.hpp
 
-NAME = ex01
+NAME = MutantStack
 
 all: $(NAME)
 
