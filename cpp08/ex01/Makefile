@@ -14,7 +14,7 @@ NAME = ex01
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 %.o: %.cpp $(HDR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@

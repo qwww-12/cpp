@@ -2,7 +2,20 @@
 
 static void test( void )
 {
-    std::vector<unsigned int> vec_int = {122, 34, 566, 23, 64, 23, 92, 7, 9, 1, 24, 89, 2};
+    std::vector<unsigned int> vec_int;
+    vec_int.push_back(122);
+    vec_int.push_back(34);
+    vec_int.push_back(566);
+    vec_int.push_back(23);
+    vec_int.push_back(64);
+    vec_int.push_back(23);
+    vec_int.push_back(92);
+    vec_int.push_back(7);
+    vec_int.push_back(9);
+    vec_int.push_back(1);
+    vec_int.push_back(24);
+    vec_int.push_back(89);
+    vec_int.push_back(2);
     Span            sp((unsigned int)vec_int.size());
     try{
         sp.moreNumbers(vec_int.begin(), vec_int.end());

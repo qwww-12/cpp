@@ -46,8 +46,8 @@ int     Span::shortestSpan( void )
     std::sort(vec.begin(), vec.end());
     int     min = vec[1] - vec[0];
 
-    for (int i = 1; i < vec.size() - 1; i++){
-        if ((-1 * (vec[i] - vec[i + 1])) < min)
+    for (unsigned int i = 1; i < vec.size() - 1; i++){
+        if (static_cast<int>((-1 * (vec[i] - vec[i + 1]))) < min)
             min = vec[i + 1] - vec[i];
     }
     return (min);
@@ -64,7 +64,7 @@ int     Span::longestSpan( void )
 
 void    Span::printvec( void ) const
 {
-    for (int i = 0; i < vec.size(); i++){
+    for (unsigned int i = 0; i < vec.size(); i++){
         std::cout << "vec[" << i << "]: " << vec[i] << std::endl;
     }
 }
