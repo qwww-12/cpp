@@ -3,11 +3,12 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	main.cpp \
-		MutantStack.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 HDR =	MutantStack.hpp
+
+TPL = MutantStack.tpp
 
 NAME = MutantStack
 
@@ -16,7 +17,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-%.o: %.cpp $(HDR)
+%.o: %.cpp $(HDR) $(TPL)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
