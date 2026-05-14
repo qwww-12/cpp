@@ -25,5 +25,5 @@ typename MutantStack<T>::iterator   MutantStack<T>::begin( void ){
 
 template <typename T>
 typename MutantStack<T>::iterator    MutantStack<T>::end( void ){
-    return (this->c.end());
+    return (this->c.end() - 1);
 }
