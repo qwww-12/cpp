@@ -6,6 +6,7 @@
 #include <vector>
 #include <array>
 #include <list>
+#include <map>
 
 template <typename T>
 void    easyfind( T &cnt, int val );

@@ -37,3 +37,23 @@ template <typename T>
 typename MutantStack<T>::const_iterator MutantStack<T>::cend( void ){
     return (this->c.cend());
 }
+
+template <typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin( void ){
+    return (this->c.rbegin());
+}
+
+template <typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend( void ){
+    return (this->c.rend());
+}
+
+template <typename T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::crbegin( void ){
+    return (this->c.crbegin());
+}
+
+template <typename T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::crend( void ){
+    return (this->c.crend());
+}
