@@ -13,4 +13,11 @@ int main(int ac, char **av){
     // for (auto it : m){
     //     std::cout << it.first << " " << it.second << std::endl;
     // }
+
+
+    std::string str = "dog.cat";
+
+    std::cout << str.find('.') << std::endl;
+    std::cout << str.substr(3 + 1) << std::endl;
+    std::cout << str.substr(0, 3) << std::endl;
 }

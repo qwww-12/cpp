@@ -16,16 +16,30 @@ BitcoinExchange::~BitcoinExchange( ) {}
 void    BitcoinExchange::storageDatabase( void ){
     std::ifstream       dataBase("data.csv");
     std::string         buffer;
-
-    m["l"] = 90.9;
     if (!dataBase.is_open())
         throw std::runtime_error("Runtime Error: can't open file of data.scv");
+    getline(dataBase, buffer);
     while (getline(dataBase, buffer)){
-        std::cout << buffer << std::endl;
+        size_t  pos = buffer.rfind(',');
+        if (pos == std::string::npos)
+        {
+            dataBase.close();
+            throw std::runtime_error("Runtime Error: DataBase not valid");
+        }
+        m[buffer.substr(0, pos)] = std::stof(buffer.substr(pos + 1));
     }
     dataBase.close();
 }
 
-void    BitcoinExchange::execute( void ){
+void    BitcoinExchange::handleInputFile( char *inputFile )
+{
+    for (std::map<std::string, float>::iterator it = m.begin(); it != m.end(); it++){
+        std::cout << it->first << " == " << it->second << std::endl;
+    }
+    std::cout << inputFile << std::endl;
+}
+
+void    BitcoinExchange::execute( char *inputFile ){
     storageDatabase();
+    handleInputFile(inputFile);
 }
