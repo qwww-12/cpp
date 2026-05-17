@@ -11,6 +11,10 @@ BitcoinExchange &BitcoinExchange::operator=( const BitcoinExchange &op ){
     return (*this);
 }
 
+const char  *BitcoinExchange::BadFileInput::what( void ) const throw(){
+    return "Error: bad file input";
+}
+
 BitcoinExchange::~BitcoinExchange( ) {}
 
 void    BitcoinExchange::storageDatabase( void ){
@@ -33,13 +37,18 @@ void    BitcoinExchange::storageDatabase( void ){
 
 void    BitcoinExchange::handleInputFile( char *inputFile )
 {
-    for (std::map<std::string, float>::iterator it = m.begin(); it != m.end(); it++){
-        std::cout << it->first << " == " << it->second << std::endl;
+    std::ifstream   inFile(inputFile);
+    std::string     buffer;
+
+    if (!inFile.is_open())
+        throw std::runtime_error("Runtime Error: can't open file of " + static_cast<std::string>(inputFile));
+    if (getline(inFile, buffer)){
+        if (buffer != "date | value")
+            throw BitcoinExchange::BadFileInput();
     }
-    std::cout << inputFile << std::endl;
 }
 
-void    BitcoinExchange::execute( char *inputFile ){
+void    BitcoinExchange::runBitcoinExchange( char *inputFile ){
     storageDatabase();
     handleInputFile(inputFile);
 }

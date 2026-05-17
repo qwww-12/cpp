@@ -3,19 +3,25 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <exception>
 #include <string>
 
 class   BitcoinExchange{
     private:
         void    storageDatabase( void );
         void    handleInputFile( char *inputFile );
-        std::map<std::string, float>  m;
 
+        class   BadFileInput : public std::exception{
+            public:
+                const char  *what( void ) const throw();
+        };
+
+        std::map<std::string, float>  m;
     public:
         BitcoinExchange( void );
         BitcoinExchange( const BitcoinExchange &copy );
         BitcoinExchange &operator=( const BitcoinExchange &op );
         ~BitcoinExchange( );
 
-        void    execute( char *inputFile );
+        void    runBitcoinExchange( char *inputFile );
 };
