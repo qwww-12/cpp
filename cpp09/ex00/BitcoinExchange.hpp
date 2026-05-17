@@ -6,7 +6,7 @@
 class   BitcoinExchange{
     private:
         std::map<std::string, std::string>  m;
-    
+
     public:
         BitcoinExchange( void );
         BitcoinExchange( const BitcoinExchange &copy );

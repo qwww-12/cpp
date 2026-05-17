@@ -8,6 +8,6 @@ int main(int ac, char **av){
         std::cout << "Error: too many arguments" << std::endl;
         return (1);
     } else{
-        
+
     }
-}
+}ls
