@@ -2,14 +2,19 @@
 
 #include <iostream>
 #include <map>
+#include <fstream>
 
 class   BitcoinExchange{
     private:
-        std::map<std::string, std::string>  m;
+        void    storageDatabase( void );
+
+        std::map<std::string, float>  m;
 
     public:
         BitcoinExchange( void );
         BitcoinExchange( const BitcoinExchange &copy );
         BitcoinExchange &operator=( const BitcoinExchange &op );
         ~BitcoinExchange( );
+
+        void    execute( void );
 };

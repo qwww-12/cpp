@@ -12,3 +12,20 @@ BitcoinExchange &BitcoinExchange::operator=( const BitcoinExchange &op ){
 }
 
 BitcoinExchange::~BitcoinExchange( ) {}
+
+void    BitcoinExchange::storageDatabase( void ){
+    std::ifstream       dataBase("data.csv");
+    std::string         buffer;
+
+    m["l"] = 90.9;
+    if (!dataBase.is_open())
+        throw std::runtime_error("Runtime Error: can't open file of data.scv");
+    while (getline(dataBase, buffer)){
+        std::cout << buffer << std::endl;
+    }
+    dataBase.close();
+}
+
+void    BitcoinExchange::execute( void ){
+    storageDatabase();
+}
