@@ -12,16 +12,19 @@ int main(int ac, char **av){
 
     m[1] = "a";
     // m[3] = "b";
-    m[5] = "c";
+    // m[5] = "c";
 
     std::map<int, std::string>::iterator it = m.lower_bound(2);
-    std::cout << it->first << " " << it->second << std::endl;
+    if (it == m.end()){
+        std::cout << "Not found" << std::endl;
+    }
+    // std::cout << it->first << " " << it->second << std::endl;
     // for (auto it : m){
     //     std::cout << it.first << " " << it.second << std::endl;
     // }
 
 
-    std::string str = "dog.cat";
+    // std::string str = "dog.cat";
 
     // std::cout << str.find('.') << std::endl;
     // std::cout << str.substr(3 + 1) << std::endl;
@@ -30,18 +33,18 @@ int main(int ac, char **av){
 
 
     // convert string to number
-    std::stringstream ss;
-    str = "99999999999";
-    size_t n;
-    ss << str;
-    ss >> n;
-    std::cout << n << std::endl;
+    // std::stringstream ss;
+    // str = "99999999999";
+    // size_t n;
+    // ss << str;
+    // ss >> n;
+    // std::cout << n << std::endl;
 
     // convet number to string
-    ss.clear();
-    ss.str("");
-    n = 90;
-    ss << n;
-    str = ss.str();
-    std::cout << str << std::endl;
+    // ss.clear();
+    // ss.str("");
+    // n = 90;
+    // ss << n;
+    // str = ss.str();
+    // std::cout << str << std::endl;
 }
