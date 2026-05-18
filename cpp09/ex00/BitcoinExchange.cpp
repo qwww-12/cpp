@@ -89,6 +89,7 @@ void    BitcoinExchange::handleInputFile( char *nameInputFile )
 		ss >> realNumber;
 		if (ss.fail()){
 			std::cout << "Error: bad input => " << buffer << std::endl;
+			continue ;
 		}
 		if (realNumber < 0){
 			std::cout << "Error: number is negative" << std::endl;
@@ -109,7 +110,7 @@ void    BitcoinExchange::handleInputFile( char *nameInputFile )
 			continue ;
 		}
 		finalResult = realNumber * it->second;
-		std:: cout << date << " => " << finalResult << std::endl;
+		std:: cout << date << " => " << realNumber << " = " << finalResult << std::endl;
 	}
 }
 
