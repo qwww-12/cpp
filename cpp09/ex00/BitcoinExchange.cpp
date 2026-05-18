@@ -11,6 +11,10 @@ BitcoinExchange &BitcoinExchange::operator=( const BitcoinExchange &op ){
     return (*this);
 }
 
+const char  *BitcoinExchange::BadDataBase::what( void ) const throw(){
+    return "Error: bad data base";
+}
+
 const char  *BitcoinExchange::BadFileInput::what( void ) const throw(){
     return "Error: bad file input";
 }
@@ -28,27 +32,38 @@ void    BitcoinExchange::storageDatabase( void ){
         if (pos == std::string::npos)
         {
             dataBase.close();
-            throw std::runtime_error("Runtime Error: DataBase not valid");
+            throw BitcoinExchange::BadDataBase();
         }
         m[buffer.substr(0, pos)] = std::stof(buffer.substr(pos + 1));
     }
     dataBase.close();
 }
 
-void    BitcoinExchange::handleInputFile( char *inputFile )
+void    BitcoinExchange::handleInputFile( char *nameInputFile )
 {
-    std::ifstream   inFile(inputFile);
+    std::ifstream   inputFile(nameInputFile);
     std::string     buffer;
 
-    if (!inFile.is_open())
-        throw std::runtime_error("Runtime Error: can't open file of " + static_cast<std::string>(inputFile));
-    if (getline(inFile, buffer)){
-        if (buffer != "date | value")
+    if (!inputFile.is_open())
+        throw std::runtime_error("Runtime Error: can't open file of " + static_cast<std::string>(nameInputFile));
+    if (getline(inputFile, buffer)){
+        if (buffer != "date | value"){
+            inputFile.close();
             throw BitcoinExchange::BadFileInput();
+        }
+    }
+    while (getline(inputFile, buffer)){
+        size_t pos = buffer.find('|');
+        if (pos == std::string::npos){
+            inputFile.close();
+            throw BitcoinExchange::BadFileInput();
+        }
+        std::string     str = buffer.substr(pos + 1);
+        long            nbr = std::stol
     }
 }
 
-void    BitcoinExchange::runBitcoinExchange( char *inputFile ){
+void    BitcoinExchange::runBitcoinExchange( char *nameInputFile ){
     storageDatabase();
-    handleInputFile(inputFile);
+    handleInputFile(nameInputFile);
 }

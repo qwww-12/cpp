@@ -5,12 +5,18 @@
 #include <fstream>
 #include <exception>
 #include <string>
+#include <sstream>
 
 class   BitcoinExchange{
     private:
         void    storageDatabase( void );
-        void    handleInputFile( char *inputFile );
+        void    handleInputFile( char *nameInputFile );
 
+
+        class   BadDataBase : public std::exception{
+            public:
+                const char  *what( void ) const throw();
+        };
         class   BadFileInput : public std::exception{
             public:
                 const char  *what( void ) const throw();
@@ -23,5 +29,5 @@ class   BitcoinExchange{
         BitcoinExchange &operator=( const BitcoinExchange &op );
         ~BitcoinExchange( );
 
-        void    runBitcoinExchange( char *inputFile );
+        void    runBitcoinExchange( char *nameInputFile );
 };
