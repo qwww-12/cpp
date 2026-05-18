@@ -84,7 +84,15 @@ void    BitcoinExchange::handleInputFile( char *nameInputFile )
 			std::cout << "Error: bad input => " << buffer << std::endl;
 			continue ;
 		}
+		if (buffer[pos + 1] != ' ' || buffer[pos - 1] != ' '){
+			std::cout << "Error: bad input => " << buffer << std::endl;
+			continue ;
+		}
 		stringNumber = buffer.substr(pos + 2);
+		if (stringNumber.find(' ') != std::string::npos){
+			std::cout << "Error: bad input => " << buffer << std::endl;
+			continue ;
+		}
 		ss << stringNumber;
 		ss >> realNumber;
 		if (ss.fail()){
@@ -105,9 +113,13 @@ void    BitcoinExchange::handleInputFile( char *nameInputFile )
 			continue ;
 		}
 		it = m.lower_bound(date);
-		if (it == m.end()){
-			std::cout << "Error: value not found in DataBase" << std::endl;
-			continue ;
+		if (it == m.end() || date != it->first)
+		{
+			if (it == m.begin()){
+				std::cout << "Error: value not found in DataBase" << std::endl;
+				continue ;
+			}
+			it--;
 		}
 		finalResult = realNumber * it->second;
 		std:: cout << date << " => " << realNumber << " = " << finalResult << std::endl;
