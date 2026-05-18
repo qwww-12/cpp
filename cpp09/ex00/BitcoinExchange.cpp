@@ -49,9 +49,9 @@ bool	BitcoinExchange::handleDate( std::string buffer ) const{
 		std::stringstream _s(_buffer);
 		_s >> number;
 		if (_s.fail()) return false;
-		if (time == 0 && (number > 9999 || number < 1)) return false;
-		if (time == 1 && (number > 12 || number < 1)) return false;
-		if (time == 2 && (number > 31 || number < 1)) return false;
+		if (time == 0 && (_buffer.length() != 4 || (number > 9999 || number < 1))) return false;
+		if (time == 1 && (_buffer.length() != 2 || (number > 12 || number < 1))) return false;
+		if (time == 2 && (_buffer.length() != 2 || (number > 31 || number < 1))) return false;
 		time++;
 	}
 	return (true);
