@@ -10,8 +10,8 @@
 class   BitcoinExchange{
     private:
         void    storageDatabase( void );
+        bool    handleDate( std::string date ) const;
         void    handleInputFile( char *nameInputFile );
-
 
         class   BadDataBase : public std::exception{
             public:

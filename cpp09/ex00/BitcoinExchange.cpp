@@ -39,6 +39,24 @@ void    BitcoinExchange::storageDatabase( void ){
 	dataBase.close();
 }
 
+bool	BitcoinExchange::handleDate( std::string buffer ) const{
+	std::stringstream	ss(buffer);
+	std::string			_buffer;
+	int					time = 0;
+	long				number;
+
+	while(getline(ss, _buffer, '-')){
+		std::stringstream _s(_buffer);
+		_s >> number;
+		if (_s.fail()) return false;
+		if (time == 0 && (number > 9999 || number < 1)) return false;
+		if (time == 1 && (number > 12 || number < 1)) return false;
+		if (time == 2 && (number > 31 || number < 1)) return false;
+		time++;
+	}
+	return (true);
+}
+
 void    BitcoinExchange::handleInputFile( char *nameInputFile )
 {
 	std::ifstream       inputFile(nameInputFile);
@@ -66,7 +84,7 @@ void    BitcoinExchange::handleInputFile( char *nameInputFile )
 			std::cout << "Error: bad input => " << buffer << std::endl;
 			continue ;
 		}
-		stringNumber = buffer.substr(pos + 1);
+		stringNumber = buffer.substr(pos + 2);
 		ss << stringNumber;
 		ss >> realNumber;
 		if (realNumber < 0){
@@ -78,6 +96,10 @@ void    BitcoinExchange::handleInputFile( char *nameInputFile )
 			continue ;
 		}
 		date = buffer.substr(0, pos - 1);
+		if (!handleDate(date)){
+			std::cout << "Error: bad input => " << buffer << std::endl;
+			continue ;
+		}
 		it = m.lower_bound(date);
 		finalResult = realNumber * it->second;
 		std:: cout << date << " => " << finalResult << std::endl;
