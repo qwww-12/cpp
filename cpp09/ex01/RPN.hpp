@@ -11,11 +11,7 @@ class   RPN{
     private:
         bool    is_operator( std::string str ) const;
 
-        class   BadNumbers : public std::exception{
-            public:
-                const char  *what() const throw();
-        };
-        class   BadOperator : public std::exception{
+        class   BadArguments : public std::exception{
             public:
                 const char  *what() const throw();
         };

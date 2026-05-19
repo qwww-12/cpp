@@ -10,12 +10,8 @@ RPN	&RPN::operator=( const RPN &op ){
 	return *this;
 }
 
-const char	*RPN::BadNumbers::what( void ) const throw(){
-	return "Error: bad number";
-}
-
-const char	*RPN::BadOperator::what( void ) const throw(){
-	return "Error: bad operator";
+const char	*RPN::BadArguments::what( void ) const throw(){
+	return "Error: bad arguments";
 }
 
 const char	*RPN::BadStack::what( void ) const throw(){
@@ -27,7 +23,7 @@ const char	*RPN::BadRPNSynatx::what( void ) const throw(){
 }
 
 const char	*RPN::NumberNotValid::what( void ) const throw(){
-	return "Error: number in argument greater than 9";
+	return "Error: number in greater than 10";
 }
 
 const char	*RPN::DivisionFail::what( void ) const throw(){
@@ -35,23 +31,7 @@ const char	*RPN::DivisionFail::what( void ) const throw(){
 }
 
 bool	RPN::is_operator( std::string str ) const{
-	if (str[0] == '+'){
-		if (str.length() != 1) throw RPN::BadOperator();
-		return (true);
-	}
-	if (str[0] == '-'){
-		if (str.length() != 1) throw RPN::BadOperator();
-		return (true);
-	}
-	if (str[0] == '*'){
-		if (str.length() != 1) throw RPN::BadOperator();
-		return (true);
-	}
-	if (str[0] == '/'){
-		if (str.length() != 1) throw RPN::BadOperator();
-		return (true);
-	}
-	return (false);
+	return (str == "+" || str == "-" || str == "*" || str == "/");
 }
 
 void	RPN::_runRPN( char *math ){
@@ -85,7 +65,7 @@ void	RPN::_runRPN( char *math ){
 		_toNumber << buffer;
 		_toNumber >> nbr;
 		if (_toNumber.fail())
-			throw RPN::BadNumbers();
+			throw RPN::BadArguments();
 		if (nbr > 9)
 			throw RPN::NumberNotValid();
 		_stack.push(nbr);
