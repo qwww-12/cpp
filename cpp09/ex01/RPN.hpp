@@ -9,10 +9,33 @@
 
 class   RPN{
     private:
+        bool    is_operator( std::string str ) const;
+
         class   BadNumbers : public std::exception{
             public:
                 const char  *what() const throw();
         };
+        class   BadOperator : public std::exception{
+            public:
+                const char  *what() const throw();
+        };
+        class   BadStack : public std::exception{
+            public:
+                const char  *what() const throw();
+        };
+        class   BadRPNSynatx : public std::exception{
+            public:
+                const char  *what() const throw();
+        };
+        class   NumberNotValid : public std::exception{
+            public:
+                const char  *what() const throw();
+        };
+        class   DivisionFail : public std::exception{
+            public:
+                const char  *what() const throw();
+        };
+
         std::stack<int>     _stack;
     
     public:
