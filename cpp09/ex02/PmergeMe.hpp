@@ -16,6 +16,6 @@ class   PmergeMe {
 
         template <typename T>
         void    _startAlgo( const T &c){
-            
+            (void)c;
         };
 };
