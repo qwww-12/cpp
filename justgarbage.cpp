@@ -47,4 +47,14 @@ int main(int ac, char **av){
     // ss << n;
     // str = ss.str();
     // std::cout << str << std::endl;
+
+			/*for (size_t i = 0; i < lenSmall; i++){
+				std::vector<int>::iterator	it = std::lower_bound(small.begin(), small.end(), small[i]);
+				for (size_t j = 0; j < big.size(); j++){
+					if (*it < big.at(j)){
+						big.insert(big.begin() + j, *it);
+						break ;
+					}
+				}
+			}*/
 }

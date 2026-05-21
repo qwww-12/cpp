@@ -40,6 +40,13 @@ class   PmergeMe {
 				else
 					_p2.push_back(std::make_pair(b, a));
 			}
+			int	odd[2];
+			odd[0] = 0;
+			odd[1] = 0;
+			if (_container.size() % 2 == 1){
+				odd[0] = 1;
+		       		odd[1] = _container.back();
+			}
 			std::vector<int>	big;
 			std::vector<int>	small;
 			for (size_t i = 0; i < _p2.size(); i++){
@@ -47,15 +54,13 @@ class   PmergeMe {
 				small.push_back(_p2[i].second);
 			}
 			std::sort(big.begin(), big.end());
-			size_t	lenSmall = small.size();
-			for (size_t i = 0; i < lenSmall; i++){
-				std::vector<int>::iterator	it = std::lower_bound(small.begin(), small.end(), small[i]);
-				for (size_t j = 0; j < big.size(); j++){
-					if (*it < big.at(j)){
-						big.insert(big.begin() + j, *it);
-						break ;
-					}
-				}
+			for (size_t i = 0; i < small.size(); i++){
+				std::vector<int>::iterator	it = std::lower_bound(big.begin(), big.end(), small.at(i));
+				big.insert(it, small.at(i));
+			}
+			if (odd[0] == 1){
+				std::vector<int>::iterator	it = std::lower_bound(big.begin(), big.end(), odd[1]);
+				big.insert(it, odd[1]);
 			}
 			if (!_flagA){
 				std::cout << "After: ";
