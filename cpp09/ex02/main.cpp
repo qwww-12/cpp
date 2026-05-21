@@ -19,11 +19,15 @@ int main(int ac, char **av){
                 throw std::invalid_argument("Error: numbers not valid");
             if (_tmpNumber < 0)
                 throw std::invalid_argument("Error: just positive numbers");
-            _vec.push_back(_tmpNumber);
-            // _deq.push_back(_tmpNumber);
+	    for (size_t i = 0; i < _vec.size(); i++){
+		    if (_tmpNumber == _vec.at(i))
+	    		throw std::invalid_argument("Error: duplicate numbers");
+	    }
+	    _vec.push_back(_tmpNumber);
+            _deq.push_back(_tmpNumber);
         }
         pm._startAlgo(_vec);
-        // pm._startAlgo(_deq);
+        pm._startAlgo(_deq);
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
