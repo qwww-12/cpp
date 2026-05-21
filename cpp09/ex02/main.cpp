@@ -19,8 +19,8 @@ int main(int ac, char **av){
                 throw std::invalid_argument("Error: numbers not valid");
             if (_tmpNumber < 0)
                 throw std::invalid_argument("Error: just positive numbers");
-	    for (size_t i = 0; i < _vec.size(); i++){
-		    if (_tmpNumber == _vec.at(i))
+	    for (std::vector<int>::const_iterator it = _vec.begin(); it < _vec.end(); it++){
+		    if (_tmpNumber == *it)
 	    		throw std::invalid_argument("Error: duplicate numbers");
 	    }
 	    _vec.push_back(_tmpNumber);
