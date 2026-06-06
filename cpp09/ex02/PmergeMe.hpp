@@ -6,14 +6,10 @@
 #include <deque>
 #include <utility>
 #include <exception>
-#include <sys/wait.h>
+#include <sys/time.h>
 #include <algorithm>
 
 class   PmergeMe {
-	private:
-		bool	_flagB;
-		bool	_flagA;
-
 	public:
 		PmergeMe( );
 		PmergeMe( const PmergeMe &copy );
@@ -21,16 +17,28 @@ class   PmergeMe {
 		~PmergeMe();
 
 		template <typename T>
-		void    _startAlgo(T &_container){
-			if (!_flagB){
-				std::cout << "Befor: ";
-				for (typename T::iterator it = _container.begin(); it != _container.end(); it++){
-					std::cout << " ";
-					std::cout << *it;
-				}
-				std::cout << std::endl;
-				_flagB = true;
+		void	_befor(T &_cnt){
+			std::cout << "Befor: ";
+			for (typename T::iterator it = _cnt.begin(); it != _cnt.end(); it++){
+				std::cout << " ";
+				std::cout << *it;
 			}
+			std::cout << std::endl;
+		}
+		template <typename T>
+		void	_after(T &_cnt){
+			std::cout << "After: ";
+			for (typename T::iterator it = _cnt.begin(); it != _cnt.end(); it++){
+				std::cout << " ";
+				std::cout << *it;
+			}
+			std::cout << std::endl;
+		}
+		template <typename T>
+		T	_startAlgo(T _container){
+			if (_container.size() <= 1)
+				return _container;
+
 			std::vector<std::pair<int, int> >	_p2;
 			for (size_t i = 0; i + 1 < _container.size(); i += 2){
 				int a = _container[i];
@@ -40,36 +48,28 @@ class   PmergeMe {
 				else
 					_p2.push_back(std::make_pair(b, a));
 			}
-			int	odd[2];
-			odd[0] = 0;
-			odd[1] = 0;
-			if (_container.size() % 2 == 1){
-				odd[0] = 1;
-		       		odd[1] = _container.back();
-			}
-			std::vector<int>	big;
-			std::vector<int>	small;
+
+			int odd = -1;
+			if (_container.size() % 2 == 1)
+		       		odd = _container.back();
+
+			T	big;
+			T	small;
 			for (size_t i = 0; i < _p2.size(); i++){
 				big.push_back(_p2[i].first);
 				small.push_back(_p2[i].second);
 			}
-			std::sort(big.begin(), big.end());
+
+			big = _startAlgo(big);
+
 			for (size_t i = 0; i < small.size(); i++){
-				std::vector<int>::iterator	it = std::lower_bound(big.begin(), big.end(), small.at(i));
+				typename T::iterator	it = std::lower_bound(big.begin(), big.end(), small.at(i));
 				big.insert(it, small.at(i));
 			}
-			if (odd[0] == 1){
-				std::vector<int>::iterator	it = std::lower_bound(big.begin(), big.end(), odd[1]);
-				big.insert(it, odd[1]);
+			if (odd != -1){
+				typename T::iterator	it = std::lower_bound(big.begin(), big.end(), odd);
+				big.insert(it, odd);
 			}
-			if (!_flagA){
-				std::cout << "After: ";
-				for (std::vector<int>::iterator it = big.begin(); it != big.end(); it++){
-					std::cout << " ";
-					std::cout << *it;
-				}
-				std::cout << std::endl;
-				_flagA = true;
-			}
+			return (big);
 		};
 };
