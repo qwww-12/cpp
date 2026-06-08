@@ -62,14 +62,31 @@ class   PmergeMe {
 
 			big = _startAlgo(big);
 
-			for (size_t i = 0; i < small.size(); i++){
-				typename T::iterator	it = std::lower_bound(big.begin(), big.end(), small.at(i));
-				big.insert(it, small.at(i));
+			T	order;
+			order.push_back(0);
+			
+			size_t a = 1;
+			size_t b = 3;
+			while (a < small.size()){ // [9, 3, 1, 0] -> 4
+				for (size_t k = b; --k >= a; ){
+					if (k < small.size())
+						order.push_back(k); // 0, 2, 1
+				}
+				size_t c = (b + 2) * a; // -> 5
+				a = b; // a = 3
+				b = c;	// b = 5
 			}
+			for (size_t i = 0; i < order.size(); i++){
+				typename T::iterator it = std::lower_bound(big.begin(), big.end(), small[order[i]]);
+				big.insert(it, small[order[i]]);
+			}
+			
 			if (odd != -1){
-				typename T::iterator	it = std::lower_bound(big.begin(), big.end(), odd);
+				typename T::iterator it = std::lower_bound(big.begin(), big.end(), odd);
 				big.insert(it, odd);
 			}
 			return (big);
 		};
 };
+// J(n) = J(n-1) + 2 x J(n-2)
+// next = current + 2 * previous; jacobsthal
