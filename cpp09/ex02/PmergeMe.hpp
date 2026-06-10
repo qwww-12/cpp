@@ -72,7 +72,7 @@ class   PmergeMe {
 		PmergeMe( );
 		PmergeMe( const std::vector<int> &_externalVec );
 		PmergeMe( const std::deque<int> &_externalDeq );
-		PmergeMe( const std::vector<int> &_externalVec, const std::deque<int> &_externalDeq);
+		PmergeMe( const std::vector<int> &_externalVec, const std::deque<int> &_externalDeq );
 		PmergeMe( const PmergeMe &copy );
 		PmergeMe    &operator=( const PmergeMe &op );
 		~PmergeMe();
@@ -91,5 +91,5 @@ class   PmergeMe {
 				std::cout << *it;
 			}
 			std::cout << std::endl;
-	}
+		}
 };
